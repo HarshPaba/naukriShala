@@ -1,4 +1,3 @@
-
 import re
 from ftfy import fix_text
 import numpy as np
@@ -7,9 +6,10 @@ import streamlit as st
 from pdfminer.high_level import extract_text
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
-import nltk
-from nltk.corpus import stopwords
 
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
 
 data = pd.read_csv(r"https://raw.githubusercontent.com/OmkarPathak/pyresparser/master/pyresparser/skills.csv") 
 SKILLS_DB = list(data.columns.values)
@@ -18,9 +18,6 @@ stopw  = set(stopwords.words('english'))
 df=pd.read_csv(r"https://raw.githubusercontent.com/HarshPaba/naukri_Shala/main/job_final.csv")
 df['test']=df['Job_Description'].apply(lambda x: ' '.join([word for word in str(x).split() if len(word)>2 and word not in (stopw)]))
 
-import nltk
-nltk.download('stopwords')
-from nltk.corpus import stopwords
 
 def extract_skills(input_text):
     stop_words = set(nltk.corpus.stopwords.words('english'))
