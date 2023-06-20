@@ -10,6 +10,7 @@ from sklearn.neighbors import NearestNeighbors
 import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+nltk.download('punkt')
 
 data = pd.read_csv(r"https://raw.githubusercontent.com/OmkarPathak/pyresparser/master/pyresparser/skills.csv") 
 SKILLS_DB = list(data.columns.values)
